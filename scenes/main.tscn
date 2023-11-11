@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0fl71pa4g6ay"]
+
+[ext_resource type="Texture2D" uid="uid://dsf2whsimlj3p" path="res://images/background_temp.png" id="1_168c7"]
+[ext_resource type="PackedScene" uid="uid://dkymbvpjkbueu" path="res://scenes/cat.tscn" id="2_fwwo7"]
+[ext_resource type="PackedScene" uid="uid://cwt0g1xo7hsap" path="res://scenes/pointer.tscn" id="3_ko8v4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(663, 340)
+scale = Vector2(2.14, 1)
+texture = ExtResource("1_168c7")
+
+[node name="RigidBody2D" parent="." instance=ExtResource("2_fwwo7")]
+position = Vector2(113, 222)
+
+[node name="Area2D" parent="." instance=ExtResource("3_ko8v4")]
+position = Vector2(211, 178)
