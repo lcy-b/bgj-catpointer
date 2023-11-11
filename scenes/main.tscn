@@ -30,7 +30,7 @@ position = Vector2(981, 175)
 script = ExtResource("4_kb45h")
 
 [node name="ball" type="RigidBody2D" parent="."]
-position = Vector2(580, 387)
+position = Vector2(324, 542)
 gravity_scale = 2.66454e-15
 
 [node name="Sprite2D" type="Sprite2D" parent="ball"]
