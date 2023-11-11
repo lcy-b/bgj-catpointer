@@ -9,4 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.position = get_viewport().get_mouse_position()
-	pass
+	if Input.is_mouse_button_pressed(1):
+		$pointer_Sprite2D.visible = true
+	else:
+		$pointer_Sprite2D.visible = false
