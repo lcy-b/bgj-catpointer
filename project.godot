@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="bgj-catpointer"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/start_screen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [physics]
 
-2d/default_gravity=2.08165e-12
+2d/default_gravity=0.0
 
 [rendering]
 

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct5yx0cxjffby"]
+
+[ext_resource type="Script" path="res://Start Screen.gd" id="1_aomrr"]
+[ext_resource type="PackedScene" uid="uid://c4l6evs65twgv" path="res://scenes/scene_transition.tscn" id="2_f50ns"]
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aomrr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.376471, 0.239216, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 312.0
+offset_right = 701.0
+offset_bottom = 460.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 141.0
+offset_right = 803.0
+offset_bottom = 279.0
+theme_override_font_sizes/font_size = 70
+text = "GAME NAME"
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("2_f50ns")]
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_button_pressed"]

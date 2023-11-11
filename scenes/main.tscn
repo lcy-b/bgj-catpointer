@@ -1,22 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0fl71pa4g6ay"]
+[gd_scene load_steps=8 format=3 uid="uid://d0fl71pa4g6ay"]
 
-[ext_resource type="Texture2D" uid="uid://dsf2whsimlj3p" path="res://images/background_temp.png" id="1_168c7"]
+[ext_resource type="PackedScene" uid="uid://c4l6evs65twgv" path="res://scenes/scene_transition.tscn" id="1_706v0"]
 [ext_resource type="PackedScene" uid="uid://dkymbvpjkbueu" path="res://scenes/cat.tscn" id="2_fwwo7"]
 [ext_resource type="PackedScene" uid="uid://cwt0g1xo7hsap" path="res://scenes/pointer.tscn" id="3_ko8v4"]
 [ext_resource type="Script" path="res://scenes/pointer.gd" id="4_kb45h"]
 [ext_resource type="Texture2D" uid="uid://ctm7qc23led5d" path="res://images/ball.png" id="5_jymp1"]
+[ext_resource type="PackedScene" uid="uid://i74hx4lgnrxl" path="res://scenes/obstacle.tscn" id="6_opebv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcbkg"]
 radius = 96.0
 
 [node name="main_scene" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(663, 340)
-scale = Vector2(2.14, 1)
-texture = ExtResource("1_168c7")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 649.0
+color = Color(0.376471, 0.239216, 0, 1)
 
 [node name="cat" parent="." instance=ExtResource("2_fwwo7")]
 position = Vector2(175, 566)
@@ -37,3 +36,12 @@ texture = ExtResource("5_jymp1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
 shape = SubResource("CircleShape2D_dcbkg")
+
+[node name="obstacle" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(200, 300)
+mass = 50.0
+linear_damp = 1.0
+
+[node name="transition" type="CanvasLayer" parent="."]
+
+[node name="SceneTransitionRect" parent="transition" instance=ExtResource("1_706v0")]
