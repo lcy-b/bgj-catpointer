@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkymbvpjkbueu"]
+[gd_scene load_steps=11 format=3 uid="uid://dkymbvpjkbueu"]
 
 [ext_resource type="Texture2D" uid="uid://cqbtekm2pk7ac" path="res://images/cat_temp.png" id="1_4g7aj"]
 [ext_resource type="Script" path="res://scripts/cat.gd" id="1_8apyq"]
 [ext_resource type="Texture2D" uid="uid://cnmwx74p6ycat" path="res://images/cat2_temp.png" id="2_8ucta"]
-[ext_resource type="Texture2D" uid="uid://c60kgjijjipff" path="res://images/catStatic.png" id="4_tnbo7"]
+[ext_resource type="Texture2D" uid="uid://fsiqmhc624i3" path="res://images/catStatic.png" id="4_tnbo7"]
+[ext_resource type="Texture2D" uid="uid://dobayeeax3wj2" path="res://images/catAnim/frame_00001.png" id="5_hmm2a"]
+[ext_resource type="Texture2D" uid="uid://dabqaww5ncsnr" path="res://images/catAnim/frame_00002.png" id="6_yh2bo"]
+[ext_resource type="Texture2D" uid="uid://tayw67wacajv" path="res://images/catAnim/frame_00003.png" id="7_i7w11"]
+[ext_resource type="Texture2D" uid="uid://bic88l4b3fe7l" path="res://images/catAnim/frame_00004.png" id="8_v5mqb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3r8n"]
 animations = [{
@@ -13,6 +17,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_8ucta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bn2jr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hmm2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yh2bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i7w11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v5mqb")
 }],
 "loop": true,
 "name": &"default",
@@ -33,6 +57,7 @@ frame = 1
 frame_progress = 0.535185
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-100, 2.08165e-12)
 rotation = 1.5708
 scale = Vector2(0.3, 0.3)
@@ -40,3 +65,10 @@ texture = ExtResource("4_tnbo7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-163, 0, -146, -28, -91, -20, -53, -32, -19, -14, 7, -28, 34, -24, 40, -1, 33, 28, 1, 29, -19, 15, -52, 33, -91, 21, -143, 33)
+
+[node name="animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(-100, 2.08165e-12)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_bn2jr")
+frame_progress = 0.346282
