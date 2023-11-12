@@ -40,7 +40,7 @@ offset_top = 416.0
 offset_right = 1162.0
 offset_bottom = 554.0
 theme_override_font_sizes/font_size = 70
-text = "GAME NAME"
+text = "CAT POINTER"
 
 [node name="SceneTransitionRect" parent="." instance=ExtResource("2_f50ns")]
 layout_mode = 1
