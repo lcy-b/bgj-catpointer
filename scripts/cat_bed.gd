@@ -5,7 +5,10 @@ signal hit_obstacle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var _pos_y = [200, 550, 900]
+	randomize()
+	var random_pos_y = _pos_y[randi() % _pos_y.size()]
+	self.global_position = Vector2(1650,random_pos_y)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

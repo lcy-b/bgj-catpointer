@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0fl71pa4g6ay"]
+[gd_scene load_steps=11 format=3 uid="uid://d0fl71pa4g6ay"]
 
 [ext_resource type="PackedScene" uid="uid://c4l6evs65twgv" path="res://scenes/scene_transition.tscn" id="1_706v0"]
 [ext_resource type="Script" path="res://scripts/GoodJobLabel.gd" id="1_lm1m7"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_mhl8y"]
 [ext_resource type="PackedScene" uid="uid://dkymbvpjkbueu" path="res://scenes/cat.tscn" id="2_fwwo7"]
 [ext_resource type="Script" path="res://scripts/ExtremelyGoodJob.gd" id="2_ml86a"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="3_2qpbo"]
 [ext_resource type="PackedScene" uid="uid://cwt0g1xo7hsap" path="res://scenes/pointer.tscn" id="3_ko8v4"]
 [ext_resource type="Script" path="res://scripts/pointer.gd" id="4_kb45h"]
 [ext_resource type="PackedScene" uid="uid://i74hx4lgnrxl" path="res://scenes/obstacle.tscn" id="6_opebv"]
 [ext_resource type="PackedScene" uid="uid://67mgraosrj5u" path="res://scenes/cat_bed.tscn" id="7_o2ep7"]
 
 [node name="main_scene" type="Node2D"]
+script = ExtResource("1_mhl8y")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -42,6 +45,15 @@ theme_override_font_sizes/font_size = 80
 text = "EXTREMELY GOOD JOB!!!"
 script = ExtResource("2_ml86a")
 
+[node name="Button" type="Button" parent="GoodJobCanvas"]
+offset_left = 904.0
+offset_top = 775.0
+offset_right = 1064.0
+offset_bottom = 825.0
+theme_override_font_sizes/font_size = 30
+text = "Next Level"
+script = ExtResource("3_2qpbo")
+
 [node name="Cat Bed" parent="." instance=ExtResource("7_o2ep7")]
 position = Vector2(1725, 947)
 
@@ -56,27 +68,60 @@ position = Vector2(981, 175)
 script = ExtResource("4_kb45h")
 
 [node name="obstacle" parent="." instance=ExtResource("6_opebv")]
-position = Vector2(200, 300)
+position = Vector2(216, 186)
 mass = 50.0
-linear_damp = 1.0
 
 [node name="obstacle2" parent="." instance=ExtResource("6_opebv")]
-position = Vector2(670, 796)
+position = Vector2(498, 769)
 mass = 3.0
-linear_damp = 1.0
 
 [node name="obstacle3" parent="." instance=ExtResource("6_opebv")]
 position = Vector2(966, 478)
-linear_damp = 1.0
 
 [node name="obstacle4" parent="." instance=ExtResource("6_opebv")]
 position = Vector2(1415, 303)
 linear_damp = 0.5
+
+[node name="obstacle5" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(576, 376)
+
+[node name="obstacle6" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(642, 118)
+
+[node name="obstacle7" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(777, 907)
+
+[node name="obstacle8" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(776, 690)
+
+[node name="obstacle9" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1304, 527)
+
+[node name="obstacle10" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(347, 476)
+
+[node name="obstacle11" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1307, 865)
+
+[node name="obstacle12" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1480, 703)
+
+[node name="obstacle13" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(226, 849)
+
+[node name="obstacle14" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1293, 105)
+
+[node name="obstacle15" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1711, 367)
 
 [node name="transition" type="CanvasLayer" parent="."]
 
 [node name="SceneTransitionRect" parent="transition" instance=ExtResource("1_706v0")]
 visible = false
 
+[connection signal="pressed" from="GoodJobCanvas/Button" to="." method="_on_button_pressed"]
 [connection signal="hit" from="Cat Bed" to="GoodJobCanvas/GoodJobLabel" method="_on_cat_bed_hit"]
+[connection signal="hit" from="Cat Bed" to="GoodJobCanvas/Button" method="_on_cat_bed_hit"]
 [connection signal="hit_obstacle" from="Cat Bed" to="GoodJobCanvas/ExtremelyGoodJob" method="_on_cat_bed_hit_obstacle"]
+[connection signal="hit_obstacle" from="Cat Bed" to="GoodJobCanvas/Button" method="_on_cat_bed_hit_obstacle"]

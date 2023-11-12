@@ -13,3 +13,11 @@ func _process(delta):
 
 func _on_cat_bed_hit_obstacle():
 	self.show()
+
+
+func _on_cat_bed_3_hit_obstacle():
+	pass # Replace with function body.
+
+
+func _on_cat_bed_2_hit_obstacle():
+	pass # Replace with function body.
