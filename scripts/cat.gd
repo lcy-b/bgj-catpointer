@@ -24,7 +24,7 @@ func _integrate_forces(state):
 		var final_force = force_towards_pointer + near_force
 		apply_force(final_force)
 		$animation.play()
-		print(state.linear_velocity.length())
+		#print(state.linear_velocity.length())
 		$animation.speed_scale = state.linear_velocity.length() / max_anim_velocity * 3
 	else:
 		apply_force(Vector2(0,0))

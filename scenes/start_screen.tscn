@@ -23,10 +23,10 @@ color = Color(0.376471, 0.239216, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 469.0
-offset_top = 312.0
-offset_right = 701.0
-offset_bottom = 460.0
+offset_left = 811.0
+offset_top = 580.0
+offset_right = 1071.0
+offset_bottom = 660.0
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -35,10 +35,10 @@ text = "START"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 373.0
-offset_top = 141.0
-offset_right = 803.0
-offset_bottom = 279.0
+offset_left = 732.0
+offset_top = 416.0
+offset_right = 1162.0
+offset_bottom = 554.0
 theme_override_font_sizes/font_size = 70
 text = "GAME NAME"
 

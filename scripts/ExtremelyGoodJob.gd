@@ -11,6 +11,5 @@ func _process(delta):
 	pass
 
 
-func _on_cat_bed_hit():
+func _on_cat_bed_hit_obstacle():
 	self.show()
-

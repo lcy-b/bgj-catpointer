@@ -1,37 +1,49 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0fl71pa4g6ay"]
+[gd_scene load_steps=9 format=3 uid="uid://d0fl71pa4g6ay"]
 
 [ext_resource type="PackedScene" uid="uid://c4l6evs65twgv" path="res://scenes/scene_transition.tscn" id="1_706v0"]
 [ext_resource type="Script" path="res://scripts/GoodJobLabel.gd" id="1_lm1m7"]
 [ext_resource type="PackedScene" uid="uid://dkymbvpjkbueu" path="res://scenes/cat.tscn" id="2_fwwo7"]
+[ext_resource type="Script" path="res://scripts/ExtremelyGoodJob.gd" id="2_ml86a"]
 [ext_resource type="PackedScene" uid="uid://cwt0g1xo7hsap" path="res://scenes/pointer.tscn" id="3_ko8v4"]
 [ext_resource type="Script" path="res://scripts/pointer.gd" id="4_kb45h"]
-[ext_resource type="Texture2D" uid="uid://ctm7qc23led5d" path="res://images/ball.png" id="5_jymp1"]
 [ext_resource type="PackedScene" uid="uid://i74hx4lgnrxl" path="res://scenes/obstacle.tscn" id="6_opebv"]
 [ext_resource type="PackedScene" uid="uid://67mgraosrj5u" path="res://scenes/cat_bed.tscn" id="7_o2ep7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dcbkg"]
-radius = 96.0
-
 [node name="main_scene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.376471, 0.239216, 0, 1)
 
 [node name="GoodJobCanvas" type="CanvasLayer" parent="."]
 
 [node name="GoodJobLabel" type="Label" parent="GoodJobCanvas"]
-offset_left = 344.0
-offset_top = 152.0
-offset_right = 779.0
-offset_bottom = 271.0
+offset_left = 764.0
+offset_top = 314.0
+offset_right = 1199.0
+offset_bottom = 433.0
 theme_override_font_sizes/font_size = 80
 text = "GOOD JOB!"
 script = ExtResource("1_lm1m7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1153.0
-offset_bottom = 649.0
-color = Color(0.376471, 0.239216, 0, 1)
+[node name="ExtremelyGoodJob" type="Label" parent="GoodJobCanvas"]
+offset_left = 525.0
+offset_top = 174.0
+offset_right = 1461.0
+offset_bottom = 293.0
+theme_override_font_sizes/font_size = 80
+text = "EXTREMELY GOOD JOB!!!"
+script = ExtResource("2_ml86a")
 
 [node name="Cat Bed" parent="." instance=ExtResource("7_o2ep7")]
-position = Vector2(940, 341)
+position = Vector2(1725, 947)
 
 [node name="cat" parent="." instance=ExtResource("2_fwwo7")]
 position = Vector2(175, 566)
@@ -43,23 +55,28 @@ angular_damp = 1.0
 position = Vector2(981, 175)
 script = ExtResource("4_kb45h")
 
-[node name="ball" type="RigidBody2D" parent="."]
-position = Vector2(324, 542)
-gravity_scale = 2.66454e-15
-
-[node name="Sprite2D" type="Sprite2D" parent="ball"]
-texture = ExtResource("5_jymp1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
-shape = SubResource("CircleShape2D_dcbkg")
-
 [node name="obstacle" parent="." instance=ExtResource("6_opebv")]
 position = Vector2(200, 300)
 mass = 50.0
 linear_damp = 1.0
 
+[node name="obstacle2" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(670, 796)
+mass = 3.0
+linear_damp = 1.0
+
+[node name="obstacle3" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(966, 478)
+linear_damp = 1.0
+
+[node name="obstacle4" parent="." instance=ExtResource("6_opebv")]
+position = Vector2(1415, 303)
+linear_damp = 0.5
+
 [node name="transition" type="CanvasLayer" parent="."]
 
 [node name="SceneTransitionRect" parent="transition" instance=ExtResource("1_706v0")]
+visible = false
 
 [connection signal="hit" from="Cat Bed" to="GoodJobCanvas/GoodJobLabel" method="_on_cat_bed_hit"]
+[connection signal="hit_obstacle" from="Cat Bed" to="GoodJobCanvas/ExtremelyGoodJob" method="_on_cat_bed_hit_obstacle"]
